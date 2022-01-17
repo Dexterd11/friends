@@ -6,7 +6,6 @@ Run project :
 
 Import migrations / fixtures (Random generated)
 
-
 2. `docker exec -it php bin/console doctrine:migrations:migrate`
 
 3. `docker exec -it php bin/console doctrine:fixtures:load`
