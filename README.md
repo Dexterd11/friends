@@ -4,8 +4,9 @@ Steps to follow :
 Run project :
 1. `docker-compose up -d --build`
 
-Import fixtures (Random generated)
-2. `docker exec -it php bin/console doctrine:fixtures:load`
+Import migrations / fixtures (Random generated)
+2. `docker exec -it php bin/console doctrine:migrations:migrate`
+3. `docker exec -it php bin/console doctrine:fixtures:load`
 
 Example url :
 User list :

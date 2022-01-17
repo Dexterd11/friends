@@ -23,7 +23,6 @@ services:
       - ./app:/var/www/friends
     depends_on:
       - database
-    command: sh -c "/usr/local/bin/init.sh && exec myexecutable"
 
   nginx:
     container_name: nginx
