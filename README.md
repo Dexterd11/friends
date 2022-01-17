@@ -5,7 +5,10 @@ Run project :
 1. `docker-compose up -d --build`
 
 Import migrations / fixtures (Random generated)
+
+
 2. `docker exec -it php bin/console doctrine:migrations:migrate`
+
 3. `docker exec -it php bin/console doctrine:fixtures:load`
 
 Example url :

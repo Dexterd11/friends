@@ -45,44 +45,44 @@ class FriendsRepository extends ServiceEntityRepository
 		switch ($level) {
 			case 1:
 				return $qb
-					->select('f0.user_id as user_from,\'Direct\' as chain_1,f0.friend_id as user_till')
-					->where('f0.user_id = :userA')
-					->andWhere('f0.friend_id = :userB')
-					->setParameter('userA', $this->userA)
-					->setParameter('userB', $this->userB)->setMaxResults(1)->getQuery()->getResult();
+					->select("f0.user_id as user_from,\'Direct\' as chain_1,f0.friend_id as user_till")
+					->where("0.user_id = :userA")
+					->andWhere("f0.friend_id = :userB")
+					->setParameter("userA", $this->userA)
+					->setParameter("userB", $this->userB)->setMaxResults(1)->getQuery()->getResult();
 			case 2:
 				return $qb
-					->from("App\Entity\Friends", 'f1')
-					->select('f0.user_id as user_from,f1.user_id as chain_1,f1.friend_id as user_till')
-					->where('f0.user_id = :userB')
-					->andWhere('f0.friend_id = f1.user_id')
-					->andWhere('f1.friend_id = :userA')
-					->setParameter('userA', $this->userA)
-					->setParameter('userB', $this->userB)->setMaxResults(1)->getQuery()->getResult();
+					->from("App\Entity\Friends", "1")
+					->select("f0.user_id as user_from,f1.user_id as chain_1,f1.friend_id as user_till")
+					->where("f0.user_id = :userB")
+					->andWhere("f0.friend_id = f1.user_id")
+					->andWhere("f1.friend_id = :userA")
+					->setParameter("userA", $this->userA)
+					->setParameter("userB", $this->userB)->setMaxResults(1)->getQuery()->getResult();
 			case 3:
 				return $qb
-					->from("App\Entity\Friends", 'f1')
-					->from("App\Entity\Friends", 'f2')
-					->select('f0.user_id as user_from,f1.user_id as chain_1,f2.user_id as chain_2,f2.friend_id as user_till')
-					->where('f0.user_id = :userB')
-					->andWhere('f0.friend_id = f1.user_id')
-					->andWhere('f1.friend_id = f2.user_id')
-					->andWhere('f2.friend_id = :userA')
-					->setParameter('userA', $this->userA)
-					->setParameter('userB', $this->userB)->setMaxResults(1)->getQuery()->getResult();
+					->from("App\Entity\Friends", "f1")
+					->from("App\Entity\Friends", "f2")
+					->select("f0.user_id as user_from,f1.user_id as chain_1,f2.user_id as chain_2,f2.friend_id as user_till")
+					->where("f0.user_id = :userB")
+					->andWhere("f0.friend_id = f1.user_id")
+					->andWhere("f1.friend_id = f2.user_id")
+					->andWhere("f2.friend_id = :userA")
+					->setParameter("userA", $this->userA)
+					->setParameter("userB", $this->userB)->setMaxResults(1)->getQuery()->getResult();
 			case 4:
 				return $qb
-					->from("App\Entity\Friends", 'f1')
-					->from("App\Entity\Friends", 'f2')
-					->from("App\Entity\Friends", 'f3')
-					->select('f0.user_id as user_from,f1.user_id as chain_1,f2.user_id as chain_2,f3.user_id as chain_3,f3.friend_id as user_till')
-					->where('f0.user_id = :userB')
-					->andWhere('f0.friend_id = f1.user_id')
-					->andWhere('f1.friend_id = f2.user_id')
-					->andWhere('f2.friend_id = f3.user_id')
-					->andWhere('f3.friend_id = :userA')
-					->setParameter('userA', $this->userA)
-					->setParameter('userB', $this->userB)->setMaxResults(1)->getQuery()->getResult();
+					->from("App\Entity\Friends", "f1")
+					->from("App\Entity\Friends", "f2")
+					->from("App\Entity\Friends", "f3")
+					->select("f0.user_id as user_from,f1.user_id as chain_1,f2.user_id as chain_2,f3.user_id as chain_3,f3.friend_id as user_till")
+					->where("f0.user_id = :userB")
+					->andWhere("f0.friend_id = f1.user_id")
+					->andWhere("f1.friend_id = f2.user_id")
+					->andWhere("f2.friend_id = f3.user_id")
+					->andWhere("f3.friend_id = :userA")
+					->setParameter("userA", $this->userA)
+					->setParameter("userB", $this->userB)->setMaxResults(1)->getQuery()->getResult();
 		}
 		return null;
 	}
@@ -94,8 +94,9 @@ class FriendsRepository extends ServiceEntityRepository
 	{
 
 		for ($i = 1; $i < 5; $i++) {
-			if (!empty($this->getFriends($i))) {
-				return $this->getFriends($i);
+			$friends = $this->getFriends($i);
+			if (!empty($friends)) {
+				return $friends;
 			}
 		}
 		return null;

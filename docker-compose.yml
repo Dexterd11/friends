@@ -12,8 +12,6 @@ services:
       MYSQL_PASSWORD: symfony
     ports:
       - '4306:3306'
-    volumes:
-      - ./mysql:/var/lib/mysql
 
   php:
     container_name: php
