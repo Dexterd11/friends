@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+	<style>
+		.wrapper {
+			margin: 1em auto;
+			width: 95%;
+		}
+	</style>
+
+	<div class="wrapper">
+
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">User Id</th>
+				<th scope="col">Full name</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for id in users %}
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ id.userid }}</td>
+					<td>{{ id.name }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
