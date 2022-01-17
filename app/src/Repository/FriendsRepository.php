@@ -45,14 +45,14 @@ class FriendsRepository extends ServiceEntityRepository
 		switch ($level) {
 			case 1:
 				return $qb
-					->select("f0.user_id as user_from,\'Direct\' as chain_1,f0.friend_id as user_till")
-					->where("0.user_id = :userA")
+					->select("f0.user_id as user_from,f0.friend_id as user_till")
+					->where("f0.user_id = :userA")
 					->andWhere("f0.friend_id = :userB")
 					->setParameter("userA", $this->userA)
 					->setParameter("userB", $this->userB)->setMaxResults(1)->getQuery()->getResult();
 			case 2:
 				return $qb
-					->from("App\Entity\Friends", "1")
+					->from("App\Entity\Friends", "f1")
 					->select("f0.user_id as user_from,f1.user_id as chain_1,f1.friend_id as user_till")
 					->where("f0.user_id = :userB")
 					->andWhere("f0.friend_id = f1.user_id")
