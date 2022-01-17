@@ -7,8 +7,8 @@ Run project :
 Import migrations / fixtures (Random generated)
 
 2. `docker exec -it php bin/console doctrine:migrations:migrate`
-3. 
-4. `docker exec -it php bin/console doctrine:fixtures:load`
+
+3. `docker exec -it php bin/console doctrine:fixtures:load`
 
 Example url :
 User list :
